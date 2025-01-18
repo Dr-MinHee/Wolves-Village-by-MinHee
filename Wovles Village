@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background: #0056b3;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+            text-align: center;
+        }
+        #selected-items {
+            margin: 2rem auto;
+            padding: 1rem;
+            border: 2px dashed #007bff;
+            width: 80%;
+            min-height: 100px;
+            background: #e9f5ff;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            justify-items: center;
+            margin: 2rem auto;
+            max-width: 80%;
+        }
+        .grid-item {
+            width: 100px;
+            height: 50px;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .grid-item:hover {
+            background: #007bff;
+            color: white;
+            transform: scale(1.1);
+        }
+        footer {
+            background: #007bff;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chào mừng đến với làng của MinHee</h1>
+    </header>
+    <main>
+        <h2>Hãy chọn các nhân vật bên dưới</h2>
+        <div id="selected-items">
+        </div>
+        <div class="grid-container">
+            <script>
+                const labels = [
+                    'sói con', 'sói cô đơn', 'pháp sư', 'ma sói', 'kẻ phản bội', 'ma cà rồng', 'trưởng giáo phái',
+                    'chán đời', 'du côn', 'kẻ gây rối', 'người hóa sói', 'tu sĩ', 'già làng', 'kẻ bị nguyền', 'tiên tri',
+                    'người bệnh', 'thợ săn', 'hoàng tử', 'người cứng cỏi', 'hồn ma', 'sinh đôi', 'bảo vệ', 'cupid', 'dân làng',
+                    'say xỉn', 'phù thủy', 'nhân bản', 'phù thủy già', 'người tốt', 'tiên tri tập sự', 'tiên tri hào quang',
+                    'thám tử', 'thằng ngốc', 'thị trưởng', 'mẹ trẻ', 'vuốt sói', 'sói ăn chay', 'sói tuyết', 'sói đầu đàn',
+                    'nanh sói', 'thiếu nữ', 'người phù phép'
+                ];
+
+                labels.forEach((label, index) => {
+                    document.write(`<div class='grid-item' onclick='selectItem(this)'>${label}</div>`);
+                });
+            </script>
+        </div>
+    </main>
+    <script>
+        function selectItem(item) {
+            const selectedContainer = document.getElementById('selected-items');
+            const clone = item.cloneNode(true);
+            clone.style.cursor = 'pointer';
+            clone.onclick = function() {
+                selectedContainer.removeChild(clone);
+            };
+            selectedContainer.appendChild(clone);
+        }
+    </script>
+</body>
+</html>
